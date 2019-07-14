@@ -3,6 +3,17 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
 
 <head>
+  {{ if .Site.googleAnalytics }}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ .Site.googleAnalytics }}');
+  </script>
+  {{ end }}
   <title>{{ .Site.Title }}</title>
   {{ partial "meta" . }}
   {{ partial "header_includes" . -}}
